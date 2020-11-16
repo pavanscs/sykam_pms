@@ -24,10 +24,12 @@
             <%= menu_item "Contact"%>
         <% end %>
         <%= menu_group pull: :right do %>
-          <%= menu_item "Login", new_user_session_path%>
-          <%= menu_item "Signup", new_user_registration_path %>
-          
-          
+          <%- if user_signed_in? %>
+            <%= menu_item "Logout", destroy_user_session_path, method: :delete %>
+          <%- else %>
+            <%= menu_item "Login", new_user_session_path%>
+            <%= menu_item "Signup", new_user_registration_path %>
+          <% end %>         
         <% end %>
       <% end %>
     </nav> 
@@ -44,7 +46,11 @@
     <nav class="navbar">
     <%= nav_bar fixed: :bottom do %>
       <% menu_group pull: :right do %>
-        <%= menu_item "Logout", destroy_user_session_path, method: :delete %>
+        <%- if user_signed_in? %>
+          <%= menu_item "Logout", destroy_user_session_path, method: :delete %>
+        <%- else %>
+          <h4> Welcome to Sykam PMS </h4>
+        <% end %>
       <% end %>
     <% end %>
   </nav>

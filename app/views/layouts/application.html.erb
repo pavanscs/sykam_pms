@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SykamPms</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body id="login_bg">
+      <!-- add navbar -->
+    <nav class="navbar">
+      <%= nav_bar fixed: :top, brand: "Sykam @ PMS", responsive: true do %>
+        <%= menu_group do %>
+            <%= menu_item "Home", root_path %>
+            <%= menu_divider %>
+            <%= drop_down "Products" do %>
+                <%= menu_item "Things you can't afford" %>
+                <%= menu_item "Things that won't suit you anyway"%>
+                <%= menu_item "Things you're not even cool enough to buy anyway" %>    
+            <% end %>
+            <%= menu_item "About Us" %>
+            <%= menu_item "Contact"%>
+        <% end %>
+        <%= menu_group pull: :right do %>
+          <%= menu_item "Login", new_user_session_path%>
+          <%= menu_item "Signup", new_user_registration_path %>
+          
+          
+        <% end %>
+      <% end %>
+    </nav> 
+
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+    
+    <nav class="navbar">
+    <%= nav_bar fixed: :bottom do %>
+      <% menu_group pull: :right do %>
+        <%= menu_item "Logout", destroy_user_session_path, method: :delete %>
+      <% end %>
+    <% end %>
+  </nav>
+  </body>
+</html>

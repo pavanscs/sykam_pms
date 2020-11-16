@@ -1,0 +1,65 @@
+<div class="container-fluid">
+	<div class= "row">
+        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+        <div class="col-md-10 col-sm-10 col-xs-12" style="background-color:rgba(138, 245, 234, 0.4); ">
+        	<!-- rgba(138, 245, 234, 0.4); rgba(27, 148, 218, 0.47);"-->
+            <%= form_with(url: register_user_path, method: "post") do |f| %>
+            	<h1>Registration Page</h1>
+               	<center> <%= image_tag("0.png", style: 'width: 10%;') %></center><br>
+               	 <div class= "row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                        	<%= f.label :first_name, 'First Name' %>:
+							<%= f.text_field_tag :first_name, nil, placeholder: "First Name", class: "form-control"  %>
+                        </div>
+                        <div class="form-group">
+                        	<%= f.label :user_name, 'Last Name' %>:
+							<%= f.text_field_tag :user_name, nil, placeholder: "User Name", class: "form-control"  %>
+                        </div>
+                        <div class="form-group">
+                        	<%= f.label :password, 'Password' %>:
+                            <%= f.password_field_tag 'password', nil, placeholder: "Password", class: "form-control" %>
+                        </div>
+                        <div class="form-group">
+                        	<%= f.label :confirm_password, 'Confirm_Password' %>:
+                            <%= f.password_field_tag 'confirm_password', nil, placeholder: "Confirm Password", class: "form-control" %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :gender, 'Gender' %>:<br>
+                            <%= f.radio_button_tag(:gender, "male",{:checked => true}) %>
+							<%= f.label_tag(:male, "Male") %>
+							<%= f.radio_button_tag(:gender, "female") %>
+							<%= f.label_tag(:female, "Female") %>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                         <div class="form-group">
+                        	<%= f.label :last_name, 'Last Name' %>:
+							<%= f.text_field_tag :last_name, nil, placeholder: "Last Name", class: "form-control"  %>
+                        </div>
+                        <div class="form-group">
+                        	<%= f.label :email, 'Email' %>:
+							<%= f.email_field_tag :email, nil, placeholder: "Email", class: "form-control"  %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :mobile, 'Mobile No' %>:
+                            <%= f.telephone_field_tag :mobile, nil, placeholder: "Phone", class: "form-control"  %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :date_of_birth, 'Date of birth' %>:<br>
+                            <%= date_field_tag(:date_of_birth, {}, {:class => 'form-control'})%>
+                        </div> 
+                         <div class="form-group">
+                            <%= f.label :organization_id, 'Organization' %>:
+                            <%= f.fields_for :organixation do |org| %>
+							  <%= org.collection_select(:organization_id, Organization.all, :id, :organization_name,{},{:class=>'form-control'}) %>
+							<% end %>
+                        </div>
+                    </div>
+                </div><br>
+                <center><ul><%= submit_tag 'Create', {:class=> 'btn btn-primary btn-lg btn-rounded',:style=> 'color:#FFFFFF;' } %></ul></center>
+            <% end %>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+    </div> 
+</div>

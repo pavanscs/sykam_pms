@@ -1,0 +1,47 @@
+<div class="container-fluid" id="login_bg">
+	<div class="col-xs-12">
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			<section id="wrapper" class="login-register">
+			    <div class="login-box" style="background-color:rgba(138, 245, 234, 0.4);">
+			    	<h1>&nbsp;&nbsp;Login Page</h1><br>
+			       <center><a><%= image_tag("0.png",style: 'width: 30%;') %></a></center><br>
+			    	<div class="white-box">
+			    		<form class="form-horizontal" id="loginform">
+			    			<div class="row">
+				    			<div class="col-xs-2"></div>
+				    			<div class="form-group col-xs-9">
+						            <div class="form-group" >
+						                <%= label :email, 'User_id' %>:
+										<%= email_field_tag :email, nil, placeholder: "Email", class: "form-control" %> 
+						            </div>
+							        <div class="form-group" >
+						               	<%= label :password, 'Password' %>:
+                           				<%= password_field_tag 'pass', nil, placeholder: "Password", class: "form-control" %>
+							        </div>
+							        <div class="form-group" >
+						                <div class="checkbox checkbox-primary pull-left p-t-0">
+						                    <input id="checkbox-signup" type="checkbox" name="remember">
+						                    <label for="checkbox-signup"> Remember Me </label>
+						                </div>
+						                <a href="#" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot Password?</a> 
+							        </div>
+							        <div class="form-group" >
+							        	<%= submit_tag 'Submit', {:class=> 'btn btn-primary btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light',:style=> 'color:#FFFFFF;' } %>
+							        </div>
+							    </div>
+							    <div class="col-xs-2"></div>
+							</div>
+					        <div class="form-group m-b-0">
+					            <div class="col-sm-12 text-center">
+					                <p><%= link_to "Home", root_path,{:style=> 'color:blue'} %></p>
+					            </div>
+					        </div>
+			    		</form>
+			        </div>
+			    </div>
+			</section>
+		</div>
+		<div class="col-xs-4"></div>
+	</div>
+</div>

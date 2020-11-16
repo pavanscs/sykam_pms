@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
     	@user = User.new(user_params)
     	@user.organization_id = params[:user][:organization][:organization_id].to_i
     	if @user.save
-	  		redirect_to new_user_session_path
+	  		redirect_to new_user_session_path, notice: 'Successfull created'
 	  	else
 	  		puts @user.errors.full_messages.inspect
 	  		render 'new'

@@ -1,0 +1,32 @@
+<%- if user_signed_in? %>
+	<div class="row-offcanvas row-offcanvas-left">
+	  <div id="sidebar" class="sidebar-offcanvas">
+	      <div class="col-md-12">
+	        <h3></h3>
+	        <ul class="nav nav-pills nav-stacked">
+	          <li > <%= menu_item "Home", "#" %></li>
+	          <li><a><i class="fa fa-globe fa-lg"></i>
+	                <%= menu_item "Lessons", "#" %>  
+	          </a></li>
+	          <li><a><i class="fa fa-user fa-lg"></i>
+	          Profile
+	          </a></li>
+	          <li><a><i class="fa fa-users fa-lg"></i>
+	          Users
+	          </a></li>
+	          <li><a><i class="fa fa-envelope fa-lg"></i>
+	          Contact
+	          </a></li>
+	          <li><a><i class="fa fa-question-circle fa-lg"></i>
+	          Help
+	          </a></li>
+	          <li>
+	          <%= menu_item " Projects", projects_new_path, :class => "fa fa-database" %> 
+	          </li>
+	          <li><%= menu_item " Update Settings", edit_user_registration_path, :class => "fa fa-cog"  %></li>
+	        </ul>
+	      </div>
+	  </div>
+	</div>
+<%end%>
+<!-- project(@current_user.id) -->

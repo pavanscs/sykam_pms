@@ -10,22 +10,24 @@
   </head>
   <body id="login_bg">
       <!-- add navbar -->
-      <nav class="navbar">
+    <nav class="navbar">
       <%= nav_bar fixed: :center, brand: "Sykam @ PMS", responsive: true do %>
         <%= menu_group do %>
+          <%- unless user_signed_in? %>
             <%= menu_item "Home", root_path %>
             <%= menu_divider %>
             <%= drop_down "Products" do %>
-                <%= menu_item "Things you can't afford" %>
-                <%= menu_item "Things that won't suit you anyway"%>
-                <%= menu_item "Things you're not even cool enough to buy anyway" %>    
+              <%= menu_item "Things you can't afford" %>
+              <%= menu_item "Things that won't suit you anyway"%>
+              <%= menu_item "Things you're not even cool enough to buy anyway" %>    
             <% end %>
             <%= menu_item "About Us" %>
             <%= menu_item "Contact"%>
+          <% end%>
         <% end %>
         <%= menu_group pull: :right do %>
           <%- if user_signed_in? %>
-            <%= menu_item " Update setting", edit_user_registration_path, :class => "fa fa-cog"  %>
+            <%= menu_item " Update Settings", edit_user_registration_path, :class => "fa fa-cog"  %>
             <%= menu_item " Logout", destroy_user_session_path, :class => "fa fa-sign-out", method: :delete %>
           <%- else %>
             <%= menu_item "Login", new_user_session_path%>
@@ -45,6 +47,7 @@
         <%end%>
     <% end %>
 
+    <%=yield :sidebar %>
     <%= yield %>
     
     <nav class="navbar">

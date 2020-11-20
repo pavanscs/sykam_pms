@@ -38,13 +38,15 @@
     </nav>
 
     <% if notice %>
-      <p class="alert alert-success"><%= notice %> </p>
+      <p class="alert alert-success"><%= notice %></p>
+      <!-- for now it will not seen in view -->
+      <%- unless controller_name != 'passwords' && controller_name != 'sessions' %>
+        <a href= https://mail.google.com/mail> Go to Gmail</a>
+      <%end%> 
+
     <% end %>
     <% if alert %>
-      <p class="alert alert-danger"><%= alert %>
-        <%- unless controller_name != 'passwords' && controller_name != 'sessions' %>
-        <a href= https://mail.google.com/mail> Go to Gmail</a></p>
-        <%end%>
+      <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
     <%=yield :sidebar %>

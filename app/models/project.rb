@@ -1,4 +1,8 @@
 class Project < ApplicationRecord
+
   belongs_to :user
-   enum project_type: [:Ant11_Fantasy_Games, :Bitcoin_India, :Sykam_PMS, :Red_Lorry]
+  has_many :tasks
+
+   enum project_type: [:Training, :MinProject, :"Medium Project", :"Main Project", :"Ant11 Fantasy Games"]
+
 end

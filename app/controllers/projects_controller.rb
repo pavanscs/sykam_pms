@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   def new
     @project = Project.new
+    @project = Project.all
   end
 
   def create 
@@ -12,8 +13,16 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def project_params
-  	params.permit(:title,:project_type,:user_id)
+  def show
+    @project = current_user.projects.find(params[:project_id])
+    if @project.nil?
+        @project = Project.all
+        flash.now[:alert] = "Project not found"
+        render "new"
+      end
   end
 
+  def project_params
+  	params.permit(:title,:projectProject)
+  end
 end

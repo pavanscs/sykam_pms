@@ -1,29 +1,29 @@
 <%- if user_signed_in? %>
-	<div class="row-offcanvas row-offcanvas-left">
+	<div class="row-offcanvas-left">
 	  <div id="sidebar" class="sidebar-offcanvas" >
-	      <div class="col-md-12" style="background-color:rgba(215, 255, 254, 0.58);">
+	      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 " style="background-color:rgba(215, 255, 254, 0.58);">
 	        <h3></h3>
 	        <ul class="nav nav-pills nav-stacked">
-	          <li > <%= menu_item " Dashboard", "#", :class => "fa fa-tachometer" %></li>
-	          <li><a><i class="fa fa-globe fa-lg"></i>
-	                <%= menu_item "Lessons", "#" %>  
-	          </a></li>
 	          <li><a><i class="fa fa-user fa-lg"></i>
 	          Profile
 	          </a></li>
-	          <li><a><i class="fa fa-users fa-lg"></i>
+	          <li><a><i class="fa fa-globe fa-lg"></i> 
+	          </a></li>
+
+	          <li > <%= menu_item " Dashboard", "#", :class => "fa fa-tachometer" %></li>
+
+	          <li><%= menu_item " Update Settings", edit_user_registration_path, :class => "fa fa-cog"  %></li>
+	          
+	          <li><%= menu_item " Projects", projects_new_path, :class => "fa fa-database" %> </li>
+	         <!--  <li><a><i class="fa fa-users fa-lg"></i>
 	          Users
 	          </a></li>
-	          <li><a><i class="fa fa-envelope fa-lg"></i>
+ -->	          <li><a><i class="fa fa-envelope fa-lg"></i>
 	          Contact
 	          </a></li>
 	          <li><a><i class="fa fa-question-circle fa-lg"></i>
 	          Help
 	          </a></li>
-	          <li>
-	          <%= menu_item " Projects", projects_new_path, :class => "fa fa-database" %> 
-	          </li>
-	          <li><%= menu_item " Update Settings", edit_user_registration_path, :class => "fa fa-cog"  %></li>
 	        </ul>
 	        <h3></h3>
 	      </div>

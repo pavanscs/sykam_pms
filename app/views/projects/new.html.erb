@@ -2,27 +2,52 @@
 <div class="container-fluid" id="">
   <div class="col-xs-2"><%= render "layouts/sidebar" %></div>
   <div class="col-xs-10 login-box" style="background-color:rgba(138, 245, 234, 0.4);">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-10 ">
-      <div class="col-xs-1"></div>
-      <div class="col-xs-8">
-        <h2>Projects</h2>
-        <%= form_with(url: projects_create_path, method: "post") do |f| %>
-          <div class="form-group">
-            <%= f.label :title %><br>
-            <%= f.text_field :title, class: "form-control" %>
-          </div>
+    <div class="row col-lg-12">
+      <div class="col-lg-12" style="position: fixed;" >
+        <div class="col-lg-4">
+          <h2>Projects</h2>
+          <%= form_with(url: projects_create_path, method: "post") do |f| %>
+            <div class="form-group">
+              <%= f.label :title %><br>
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
 
-          <div class="form-group">
-            <%= f.label :project_type %><br>
-  			<%= f.select :project_type, Project.project_types.keys, {}, { :class => 'form-control' } %>
-          </div>
+            <div class="form-group">
+              <%= f.label :project_type %><br>
+              <%= f.select :project_type, Project.project_types.keys, {}, { :class => 'form-control' } %><br>
+            </div>
 
-          <div class="actions">
-            <%= f.submit "create", {:class=> 'btn btn-primary btn-lg btn-rounded text-uppercase waves-effect waves-light',:style=> 'color:#FFFFFF;' } %>
-          </div><br>
-        <% end %>
+            <div class="actions text-center">
+              <%= f.submit "create", {:class=> 'btn btn-primary btn-lg btn-rounded text-uppercase waves-effect waves-light',:style=> 'color:#FFFFFF;' } %>
+            </div><br>
+          <% end %>
+        </div>
       </div>
+      <div class="col-lg-6"></div>
+      <div class="col-lg-5">
+       <h2>Displace</h2><br/>
+        <table class="table">
+          <thead style="color:Green;">
+            <tr>
+              <th scope="col">S.no</th>
+              <th scope="col">Title</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @project.each do |project| %>
+              <tr>
+                <td><%= project.id %></td>
+                <td><%= project.title %></td>
+                <td>
+                  &nbsp;<%= link_to 'Show', projects_show_path(project_id: project.id) %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-lg-1"></div>
     </div>
   </div>
 </div>

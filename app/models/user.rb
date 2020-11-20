@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :organization
   has_many :projects
+  # has_many :tasks
 
   validates :first_name, presence: true,length: { minimum: 3, maximum: 15 }, format: {with: /\A[a-zA-Z]+\z/, message:"only allows letters"}
 	validates :last_name, presence: true,length: { minimum: 3, maximum: 15 }, format: {with: /\A[a-zA-Z]+\z/, message:"only allows letters"}

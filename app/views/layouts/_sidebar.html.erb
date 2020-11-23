@@ -1,26 +1,30 @@
 <%- if user_signed_in? %>
 	<div class="row-offcanvas-left">
+		<% User.all.each do |photo| %>
+	      <% if photo.id == current_user.id.to_i %>
+	        <div class="media-left">
+	          <%= image_tag photo.avatar.url(:thumb) %>
+	        </div>
+	      <% end %>
+	    <% end %> <%= current_user.last_name.upcase %>
+	    <br>
 	  <div id="sidebar" class="sidebar-offcanvas" >
 	      <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 " style="background-color:rgba(215, 255, 254, 0.58);">
 	        <h3></h3>
 	        <ul class="nav nav-pills nav-stacked">
-	          <li><a><i class="fa fa-user fa-lg"></i>
-	          Profile
-	          </a></li>
-	          <li><a><i class="fa fa-globe fa-lg"></i> 
-	          </a></li>
+	          <li><%= menu_item " Profile", edit_user_registration_path, :class => "fa fa-user fa-lg"%></li><br>
+	         <!--  <li><i class="fa fa-globe fa-lg"></i> 
+	          </li> -->
 
-	          <li > <%= menu_item " Dashboard", "#", :class => "fa fa-tachometer" %></li>
-
-	          <li><%= menu_item " Update Settings", edit_user_registration_path, :class => "fa fa-cog"  %></li>
+	          <li > <%= menu_item " Dashboard", dashboard_index_path, :class => "fa fa-tachometer fa-lg" %></li><br>
 	          
-	          <li><%= menu_item " Projects", projects_new_path, :class => "fa fa-database" %> </li>
+	          <li><%= menu_item " Projects", projects_new_path, :class => "fa fa-database fa-lg" %> </li><br>
 	         <!--  <li><a><i class="fa fa-users fa-lg"></i>
 	          Users
 	          </a></li>
  -->	          <li><a><i class="fa fa-envelope fa-lg"></i>
 	          Contact
-	          </a></li>
+	          </a></li><br>
 	          <li><a><i class="fa fa-question-circle fa-lg"></i>
 	          Help
 	          </a></li>

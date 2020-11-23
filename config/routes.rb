@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
   get 'attachements/index'
   get 'attachements/new'
   # get 'attachements/new'
@@ -13,6 +14,11 @@ Rails.application.routes.draw do
   post 'projects/create'
   post 'tasks/create'
   post 'attachements/create'
+  delete 'attachements/destroy'
+
+  devise_scope :user do
+    patch 'registrations/update_pic' => "registrations_update_pic"
+  end
 
   get 'welcome/login'
   get 'welcome/registration'	

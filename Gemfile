@@ -37,6 +37,10 @@ gem 'devise'
 
 #Use paperclip gem latest version
 gem "paperclip", "~> 6.0.0"
+gem 'bootstrap-sass'
+
+#use Active admin gem for admin usage
+gem 'activeadmin'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

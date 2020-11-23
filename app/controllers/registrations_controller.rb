@@ -2,6 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 	def new
   	 @user = User.new
   end
+
 	def create
   	@user = User.new(user_params)
   	@user.organization_id = params[:user][:organization][:organization_id].to_i
@@ -12,6 +13,23 @@ class RegistrationsController < Devise::RegistrationsController
   		render 'new'
   	end
 	end
+
+  def update_pic
+    # @user = User.find(params[:id]) 
+    # @user.save
+    current_user.avatar = params[:user][:avatar]
+    if current_user.save!
+      redirect_to edit_user_registration_path, notice: 'Updated Successfull' 
+    else
+      render 'edit', alert: 'Update failed'
+    end
+  end
+
+  # private
+
+  # def userpic_params
+  #   params.require(:user).permit(:avatar)
+  # end
 
 	def user_params
     params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation, :mobile, :date_of_birth, :gender, :organization_id)

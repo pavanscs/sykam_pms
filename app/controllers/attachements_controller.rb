@@ -17,6 +17,19 @@ class AttachementsController < ApplicationController
 		end
   	end 
 
+  	def destroy
+  		@project = Project.find(params[:project_id])
+		@attachement = @project.attachements.find(params[:id])
+	    if @attachement.destroy
+	      redirect_to projects_show_path(project_id: @project.id), notice: 'Successfully deleted photo!'
+	    else
+	      redirect_to projects_show_path(project_id: @project.id), alert: 'File failed to Attach'
+	    end
+	end
+
+
+
+
 	private
 		def attachement_params
 			params.permit(:project_id, :image)

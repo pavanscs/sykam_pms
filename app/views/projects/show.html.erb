@@ -8,12 +8,12 @@
       <div class="col-lg-5">
        <h2>Project</h2><br/>
         <table class="table">
-          <thead style="color:Green;">
+          <thead style="color:rgba(70, 61, 6, 1);">
             <tr>
               <th scope="col">Title</th>
               <th scope="col">Project type</th>
                <th scope="col">Tasks</th>
-               <th scope="col">Add Task</th>
+               <th scope="col">Attachments</th>
               <th colspan="4"></th>
             </tr>
           </thead>
@@ -21,14 +21,24 @@
               <tr>
                 <td><%= @project.title %></td>
                 <td><%= @project.project_type %></td>
-                <% $i=0 %>
-                <% @project.tasks.each do |t,i| %>
-                   <% $i+=1 %>
-                <%end%>
                 <td>
-                <%= $i %>
+                  <% $i=0 %>
+                  <% @project.tasks.each do |t,i| %>
+                     <% $i+=1 %>
+                  <%end%>
+                  <%= link_to  $i,  tasks_new_path(project_id: params[:project_id]), :style => "color:blue" %>
               </td>
-              <td><%= link_to "<button>Add</button>".html_safe, tasks_new_path(project_id: params[:project_id]), :class=>"inbox-sf-add-btn tip" %></td>
+              <td>
+                <% $l=0 %>
+                <% @project.attachements.each do |a| %>
+                  <% if a.project_id == params[:project_id].to_i %>
+                    <div class="media-left">
+                      <% $l +=1 %>
+                    </div>
+                  <%end%>
+                <% end %>
+                <%= $l %>
+              </td>
               </tr>
           </tbody>
         </table>
@@ -37,25 +47,50 @@
       <div class="col-lg-5">
         <h2>Add Attachments</h2>
         <%= form_with(url: attachements_create_path(project_id: params[:project_id]), html: { multipart: true }, method: "post") do |f| %>
-        
           <div class="form-group">
             <%= f.label :image %>
             <%= f.file_field :image, class: 'form-control' %>
           </div>
-
           <div class="form-group">
-            <%= f.submit 'Upload document', class: 'btn btn-default' %>
+            <%= f.submit 'Upload document', class: 'btn btn-success' %>
           </div>
-
         <% end %>
       </div>
     </div>
     <div class="row col-lg-12 ">
       <div class="col-lg-1"></div>
       <div class="col-lg-6">
-        <h3>Tasks</h3>
-        <% $j=0 %>
-        <%= render @project.tasks %>
+        <div class="row">
+        <h3>
+          <div class="col-lg-5">Tasks</div> 
+          <div class="col-lg-1"><%= link_to "Add".html_safe, tasks_new_path(project_id: params[:project_id]), :class=>"btn btn-primary" %></div>
+        </h3>
+        </div><br>
+
+        <h3>Attached Files</h3>
+        <div class="media">
+          <div class="media-left">
+            <table class="table">
+              <thead style="color:rgba(70, 61, 6, 1);">
+                <tr>
+                  <th scope="col">Link</th>
+                  <th scope="col">Delete</th>
+                  <th colspan="2"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @project.attachements.each do |a| %>
+                  <% if a.project_id == params[:project_id].to_i %>
+                    <tr>
+                      <td><%= link_to a.image_file_name, a.image.url, target: '_blank', :style => "color:blue" %></td>
+                      <td><%= link_to 'Remove', attachements_destroy_path(project_id: params[:project_id], id: a.id), class: 'btn btn-danger btn-xs', method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                    </tr>
+                  <%end%>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,12 @@
+<div class="page-header"><h1>Upload Photo</h1></div>
+
+<div class="media">
+  <% @attachements.each do |a| %>
+    <div class="media-left">
+      <%= link_to image_tag(a.image.url, class: 'media-object'), a.image.url, target: '_blank' %>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"><%= a.document %></h4>
+    </div>
+  <% end %>
+</div>

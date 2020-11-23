@@ -1,12 +1,9 @@
-<p>
-	<strong>Task:</strong>
-	<%= task.task %>
-</p>
-<p>
-	<strong>ID:</strong>
-	<%= task.id %>
-</p>
-<p>
-  <%= link_to 'Edit Task', "#" %>
-  <%= link_to 'Destroy Task', "#" %>
-</p>
+<p><strong>Task-<%= $j+=1%></strong></p>
+<table class="table">
+  <thead >
+    <tr>
+      <th scope="col">Task:</th>
+      <th scope="col"><%= task.task %></th>
+    </tr>
+  </thead>
+</table>

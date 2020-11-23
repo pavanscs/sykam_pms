@@ -14,8 +14,18 @@ class TasksController < ApplicationController
 	end
   end
 
-  def task_params
-	params.permit(:task,:project_id)
+  def show
+	@project = Project.find(params[:project_id])
+	if @project.nil?
+    	@task = Task.all
+    	flash.now[:alert] = "Your task was not found"
+    	render "new"
+  	end
   end
+  
+  private
+	def task_params
+		params.permit(:task,:project_id)
+	end
 
 end

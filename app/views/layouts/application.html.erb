@@ -39,7 +39,7 @@
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
       <!-- for now it will not seen in view -->
-      <%- unless controller_name != 'passwords' && controller_name != 'sessions' %>
+      <%- unless controller_name != 'passwords' %>
         <a href= https://mail.google.com/mail> Go to Gmail</a>
       <%end%> 
     <% end %>
@@ -54,9 +54,9 @@
     <%= nav_bar fixed: :bottom do %>
       <% menu_group pull: :right do %>
         <%- if user_signed_in? %>
-          <%= menu_item "Logout", destroy_user_session_path, method: :delete %>
+        <h4> Welcome to Sykam PMS </h4>
         <%- else %>
-          <h4> Welcome to Sykam PMS </h4>
+          <%= menu_item "Admin Login", new_admin_user_session_path %>
         <% end %>
       <% end %>
     <% end %>

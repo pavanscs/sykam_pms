@@ -2,7 +2,7 @@
 <div class="container-fluid" id="">
   <div class="col-lg-2"><%= render "layouts/sidebar" %></div>
   <div class="col-lg-10 login-box" style="background-color:rgba(138, 245, 234, 0.4);"><br>
-    <div><%= link_to "<button>Back</button>".html_safe, :back, :class=>"pull-right" %></div>
+    <div><%= link_to "<button>Back</button>".html_safe, :back, :class=>"pull-right", :style => "color:white" %></div>
     <div class="row col-lg-12 ">
       <div class="col-lg-1"></div>
       <div class="col-lg-5">
@@ -63,7 +63,7 @@
         <div class="row">
         <h3>
           <div class="col-lg-5">Tasks</div> 
-          <div class="col-lg-1"><%= link_to "Add".html_safe, tasks_new_path(project_id: params[:project_id]), :class=>"btn btn-primary" %></div>
+          <div class="col-lg-1"><%= link_to "Add".html_safe, tasks_new_path(project_id: params[:project_id]), :class=>"btn btn-primary", :style => "color:white" %></div>
         </h3>
         </div><br>
 

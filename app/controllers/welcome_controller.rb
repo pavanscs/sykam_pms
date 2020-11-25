@@ -1,5 +1,9 @@
 class WelcomeController < ApplicationController
+  # before_action :authenticate_user!
+  # skip_after_action :verify_authorized, only: :index
   def index
+    # after_active WelcomeHelper
+
   end
 
   def login

@@ -22,6 +22,17 @@ class ProjectsController < ApplicationController
       end
   end
 
+  def update
+    # @project = current_user.projects.find(params[:project_id])
+    project = Project.find(params[:project_id])
+    authorize project
+    if project.update(project_params)
+      redirect_to project
+    else
+      render :edit
+    end
+  end
+
   def project_params
   	params.permit(:title,:projectProject)
   end

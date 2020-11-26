@@ -1,0 +1,28 @@
+<div ><h1>Hello Employees</h1></div>
+<h2>Displace</h2><br/>
+<table>
+  <thead>
+    <tr>
+      <th >S.no</th>
+      <th>Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% $i=0 %>
+    
+      <tr>
+      	<td>
+	      	<% AdminUser.ids.each do |id| %>
+	        	<%= id %>
+	        <%end%>
+        </td>
+        <% AdminUser.roles.each do |role| %>
+        	<td><%= role %></td>
+        <%end%>
+      </tr>
+  </tbody>
+</table>
+
+<td><%= AdminUser.ids %></td>
+<td><%= AdminUser.roles %></td>

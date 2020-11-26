@@ -6,6 +6,4 @@ class Attachement < ApplicationRecord
 
   validates_attachment_file_name :image, matches: [/png\z/, /jpe?g\z/]
 
-
-
 end

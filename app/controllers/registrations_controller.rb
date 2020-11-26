@@ -1,5 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-  
 	def new
   	 @user = User.new
   end
@@ -25,12 +24,6 @@ class RegistrationsController < Devise::RegistrationsController
       render 'edit', alert: 'Update failed'
     end
   end
-
-  # private
-
-  # def userpic_params
-  #   params.require(:user).permit(:avatar)
-  # end
 
 	def user_params
     params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation, :mobile, :date_of_birth, :gender, :organization_id)

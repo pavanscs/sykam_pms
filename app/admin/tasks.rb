@@ -5,7 +5,7 @@ ActiveAdmin.register Task do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :task, :project_id
+  permit_params :task, :project_id
   #
   # or
   #
@@ -14,6 +14,7 @@ ActiveAdmin.register Task do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+  menu :parent => "Projects Blog"
   def index
     authorize :tasks, :index?
   end

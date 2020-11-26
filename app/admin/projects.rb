@@ -5,7 +5,7 @@ ActiveAdmin.register Project do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :title, :project_type, :user_id
+  permit_params :title, :project_type, :user_id
   #
   # or
   #
@@ -14,5 +14,5 @@ ActiveAdmin.register Project do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  menu :parent => "Projects Blog"
 end

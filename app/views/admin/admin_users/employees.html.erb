@@ -1,4 +1,4 @@
-<div class="">
+<div class="container-fluid">
  <table class="index_table index">
     <thead>
       <tr>
@@ -18,27 +18,18 @@
     	<% if f.role == params[:role] %>
 	    	<% if $i.even? %>
 			    <tr class="even">
-			    	<td></td>
-			        <td><%= link_to  f.id, admin_admin_user_path(id: f.id) %></td>
-			        <td><%= f.role%></td>
-			        <td><%= f.email%></td>
-			        <td></td>
-			        <td></td>
-			        <td><%= f.created_at%></td>
-			        <td></td>
-			    </tr>
-		    <% else %>
+			<% else %>
 		    	<tr class="odd">
-			    	<td></td>
-			        <td><%= link_to  f.id, admin_admin_user_path(id: f.id) %></td>
-			        <td><%= f.role%></td>
-			        <td><%= f.email%></td>
-			        <td></td>
-			        <td></td>
-			        <td><%= f.created_at%></td>
-			        <td></td>
-			    </tr>
 		    <%end%>
+		    	<td></td>
+		        <td><%= link_to  f.id, admin_admin_user_path(id: f.id) %></td>
+		        <td><%= f.role%></td>
+		        <td><%= f.email%></td>
+		        <td></td>
+		        <td></td>
+		        <td><%= f.created_at%></td>
+		        <td></td>
+		    </tr>
 		    <% $i += 1 %>
 	    <%end%>
 	<%end%>

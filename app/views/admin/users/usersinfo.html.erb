@@ -1,0 +1,39 @@
+<div class="container-fluid">
+ <table class="index_table index">
+    <thead>
+      <tr>
+      	<th></th>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Projects</th>
+        <th>Tasks</th>
+        <th>Attachments</th>
+        <th >Organization</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <%i=0%>
+   	<% @user.each do |user| %>
+		<% if i.even? %>
+		    <tr class="even">
+		<% else %>
+	    	<tr class="odd">
+	    <%end%>	
+	    	<td></td>
+	        <td><%= user.id %></td>
+	        <td><%= user.email %></td>
+		     <td><%= user.projects.all.count%></td>
+		     <% ctasks=0; cattachements=0 %>
+		     <% user.projects.each do |project| %>
+		     	<% ctasks += project.tasks.all.count %>
+		     	<% cattachements += project.attachements.all.count %>
+		     <%end%>
+		     <td><%= ctasks %></td>
+	        <td><%= cattachements %></td>
+	        <td><%= user.organization.organization_name %></td>
+	        <td></td>
+	    </tr>
+    	<%i+=1%>
+	<%end%>
+</table>

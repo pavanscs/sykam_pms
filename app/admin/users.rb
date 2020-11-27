@@ -14,4 +14,20 @@ ActiveAdmin.register User do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
+
+  collection_action :usersinfo, method: [:post, :get] do
+    render 'usersinfo'
+  end
+
+  controller do
+    def usersinfo
+      @user = User.all
+    end
+  end
+
+  action_item :show,
+    if: proc{ current_admin_user.super? } do
+      link_to "Users Info", usersinfo_admin_users_path, method: :post
+  end
+
 end

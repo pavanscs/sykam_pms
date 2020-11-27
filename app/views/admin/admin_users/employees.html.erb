@@ -1,28 +1,45 @@
-<div ><h1>Hello Employees</h1></div>
-<h2>Displace</h2><br/>
-<table>
-  <thead>
-    <tr>
-      <th >S.no</th>
-      <th>Title</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% $i=0 %>
-    
+<div class="">
+ <table class="index_table index">
+    <thead>
       <tr>
-      	<td>
-	      	<% AdminUser.ids.each do |id| %>
-	        	<%= id %>
-	        <%end%>
-        </td>
-        <% AdminUser.roles.each do |role| %>
-        	<td><%= role %></td>
-        <%end%>
+      	<th></th>
+        <th>Id</th>
+        <th >Role</th>
+        <th >Email</th>
+        <th>Current Sign In At</th>
+        <th>Sign In Count</th>
+        <th>Created At</th>
+        <th></th>
       </tr>
-  </tbody>
+    </thead>
+    <tbody>
+    <% $i=1 %>
+    <% AdminUser.all.each do |f,i| %>
+    	<% if f.role == params[:role] %>
+	    	<% if $i.even? %>
+			    <tr class="even">
+			    	<td></td>
+			        <td><%= link_to  f.id, admin_admin_user_path(id: f.id) %></td>
+			        <td><%= f.role%></td>
+			        <td><%= f.email%></td>
+			        <td></td>
+			        <td></td>
+			        <td><%= f.created_at%></td>
+			        <td></td>
+			    </tr>
+		    <% else %>
+		    	<tr class="odd">
+			    	<td></td>
+			        <td><%= link_to  f.id, admin_admin_user_path(id: f.id) %></td>
+			        <td><%= f.role%></td>
+			        <td><%= f.email%></td>
+			        <td></td>
+			        <td></td>
+			        <td><%= f.created_at%></td>
+			        <td></td>
+			    </tr>
+		    <%end%>
+		    <% $i += 1 %>
+	    <%end%>
+	<%end%>
 </table>
-
-<td><%= AdminUser.ids %></td>
-<td><%= AdminUser.roles %></td>

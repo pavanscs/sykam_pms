@@ -2,31 +2,30 @@
   <div class= "row">
     <div class="col-md-1 col-sm-1 col-xs-12"></div>
     <div class="col-md-10 col-sm-10 col-xs-12" style="background-color:rgba(138, 245, 234, 0.4); ">
-      <!-- rgba(138, 245, 234, 0.4); rgba(27, 148, 218, 0.47);"-->
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <h2>Sign up</h2>
         <center> <%= image_tag("0.png", style: 'width: 10%;') %></center><br>
         <%= render "devise/shared/error_messages", resource: resource %>
-        <div class= "row">
-          <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class= "container-fluid row">
+          <div class="col-md-6 col-lg-6 col-xs-12">
             <div class="form-group">
               <%= f.label :first_name, 'First Name' %>
-              <%= f.text_field :first_name, autocomplete: "first_name", placeholder: "First Name", class: "form-control"  %>
+              <%= f.text_field :first_name, autocomplete: "first_name", placeholder: "First Name", class: "form-control",style: 'width: 100%'%>
             </div>
             <div class="form-group">
               <%= f.label :user_name, 'User Name' %>
-              <%= f.text_field :user_name, autocomplete: "user_name", placeholder: "User Name", class: "form-control"  %>
+              <%= f.text_field :user_name, autocomplete: "user_name", placeholder: "User Name", class: "form-control",style: 'width: 100%'%>
             </div>
             <div class="form-group">
               <%= f.label :password, 'Password' %>
               <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br>
-              <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control" %>
+              <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control",style: 'width: 100%' %>
             </div>
             <div class="form-group">
               <%= f.label :password_confirmation, 'Confirm_Password' %>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "confirm Password", class: "form-control" %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "confirm Password", class: "form-control",style: 'width: 100%' %>
             </div>
             <div class="form-group">
               <%= f.label :gender, 'Gender' %>:<br>
@@ -36,22 +35,22 @@
               <%= f.label_tag(:female, "Female") %>
             </div>
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-md-6 col-lg-6 col-xs-12">
             <div class="form-group">
               <%= f.label :last_name, 'Last Name' %>:
-              <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control"  %>
+              <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control",style: 'width: 100%'  %>
             </div>
             <div class="form-group">
               <%= f.label :email, 'Email' %>
-              <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+              <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "form-control",style: 'width: 100%' %>
             </div>
             <div class="form-group">
               <%= f.label :mobile, 'Mobile No' %>
-              <%= f.telephone_field :mobile, placeholder: "Phone", class: "form-control"  %>
+              <%= f.telephone_field :mobile, placeholder: "Phone", class: "form-control",style: 'width: 100%'  %>
             </div>
             <div class="form-group">
               <%= f.label :date_of_birth, 'Date of birth' %>:<br>
-              <%= f.date_field :date_of_birth, class: 'form-control' %>
+              <%= f.date_field :date_of_birth, class: 'form-control',style: 'width: 100%' %>
             </div> 
             <div class="form-group">
               <%= f.label :organization_id, 'Organization' %>

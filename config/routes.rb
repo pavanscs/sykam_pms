@@ -22,12 +22,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     patch 'registrations/update_pic' => "registrations_update_pic"
   end
-
-  get 'welcome/login'
-  get 'welcome/registration'	
-  post 'welcome/create', as: :register_user
+  
+  # post 'welcome/create', as: :register_user
   root 'welcome#index'
 end
-
 
  # get 'users/:user_id/projects(.:format)'

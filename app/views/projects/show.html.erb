@@ -26,7 +26,7 @@
                   <% @project.tasks.each do |t,i| %>
                      <% $i+=1 %>
                   <%end%>
-                  <%= link_to  $i,  tasks_new_path(project_id: params[:project_id]), :style => "color:blue" %>
+                  <%= link_to  $i, tasks_new_path(project_id: params[:project_id]), :style => "color:blue" %>
               </td>
               <td>
                 <% $l=0 %>
@@ -49,7 +49,7 @@
         <%= form_with(url: attachements_create_path(project_id: params[:project_id]), html: { multipart: true }, method: "post") do |f| %>
           <div class="form-group">
             <%= f.label :image %>
-            <%= f.file_field :image, class: 'form-control' %>
+            <%= f.file_field :image, class: 'form-group' %>
           </div>
           <div class="form-group">
             <%= f.submit 'Upload document', class: 'btn btn-success' %>
@@ -83,7 +83,7 @@
                   <% if a.project_id == params[:project_id].to_i %>
                     <tr>
                       <td><%= link_to a.image_file_name, a.image.url, target: '_blank', :style => "color:blue" %></td>
-                      <td><%= link_to 'Remove', attachements_destroy_path(project_id: params[:project_id], id: a.id), class: 'btn btn-danger btn-xs', method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                      <td><%= link_to 'Remove', attachements_destroy_path(project_id: params[:project_id], id: a.id), class: 'btn btn-danger btn-xs btn-rounded', method: :delete, data: {confirm: 'Are you sure?'},style: 'color:white' %></td>
                     </tr>
                   <%end%>
                 <% end %>

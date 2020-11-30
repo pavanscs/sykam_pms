@@ -1,10 +1,10 @@
 <%- if user_signed_in? %>
 <div class="container-fluid" id="">
   <div class="col-xs-2"><%= render "layouts/sidebar" %></div>
-  <div class="col-xs-10 login-box" style="background-color:rgba(138, 245, 234, 0.4);"><br>
-    <div><%= link_to "<button>Back</button>".html_safe, :back, :class=>"pull-right" %></div>
+  <div class="col-xs-10 login-box" style="background-color:rgba(138, 245, 234, 0.4); padding-bottom: 30%"><br>
+    <div><%= link_to "<button>Back</button>".html_safe, :back, :class=>"pull-right",style:"color:white" %></div>
     <h3>Dashboard</h3><br>
-    <div class="col-lg-6">
+    <!-- <div class="col-lg-6">
 	    <div class="panel panel-default">
 	        <div class="panel-heading">Project Activity Timeline</div>
 	        <select multiple class="form-control" style="height: 200px">
@@ -24,7 +24,7 @@
 	            <% end %>
 	        </select>
 	    </div>
-	</div>
+	</div> -->
  </div>
 </div>
 <%end%>

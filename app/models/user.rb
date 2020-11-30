@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	attr_accessor :gauth_token
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :organization
@@ -19,7 +20,8 @@ class User < ApplicationRecord
   # validates :password, presence: true
   # validates_confirmation_of :password
   
+  
 
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :google_authenticatable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,:lockable, :timeoutable
 end

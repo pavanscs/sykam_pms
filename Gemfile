@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
@@ -34,6 +35,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem "twitter-bootstrap-rails"
 #installing devise gem for user 
 gem 'devise'
+#two google from github
+gem 'devise_google_authenticator', :path => 'lib/devise_google_authenticator-master', :require => 'devise_google_authenticator'
+
 
 #Use paperclip gem latest version
 gem "paperclip", "~> 6.0.0"
@@ -44,6 +48,8 @@ gem 'activeadmin'
 
  #Authorization Adapter of pundit
 gem "pundit"
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

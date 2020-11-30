@@ -3,10 +3,13 @@ class WelcomeController < ApplicationController
   # skip_after_action :verify_authorized, only: :index
   def index
     # after_active WelcomeHelper
-
+    if user_signed_in?
+      redirect_to dashboard_index_path
+    end
   end
 
   def login
+
   end
   
   def registration

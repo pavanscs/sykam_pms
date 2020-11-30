@@ -56,7 +56,7 @@
         <%- if user_signed_in? %>
         <h4> Welcome to Sykam PMS </h4>
         <%- else %>
-          <%= menu_item "Admin Login", new_admin_user_session_path %>
+          <%= menu_item "Admin Login", admin_user_session_path %>
         <% end %>
       <% end %>
     <% end %>

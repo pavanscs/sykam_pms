@@ -9,7 +9,6 @@ class ApplicationPolicy
 
   def index?
     true 
-    
   end
 
   def show?
@@ -21,26 +20,11 @@ class ApplicationPolicy
   end
 
   def new? 
-    puts ";;;;;;;;"
     create?
   end
 
   def update?
-    # puts @user.super?
     true
-    # @user.super? || @user.admin? || @record == @user
-    #  if @user.admin? || @user.super?
-    #   @user == @record
-    # else
-    #   false
-    # end
-    # post = current_user.posts.find(params[:id])
-    # authorize post
-    # if post.update(post_params)
-    #   redirect_to post
-    # else
-    #   render :edit
-    # end
   end
 
   def edit?
@@ -51,12 +35,6 @@ class ApplicationPolicy
 
   def destroy?
     @user.super?
-    # if user.role == "super"
-    #   true 
-    # else
-    #   false
-    # end
-    # false
   end
 
   class Scope

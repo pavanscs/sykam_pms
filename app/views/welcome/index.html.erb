@@ -1,20 +1,19 @@
-<div class="col-xs-2"><%= render "layouts/sidebar" %></div>
 <%- unless user_signed_in? %>
-<div class="top_blk" id="home">
-    <div class="container"> 
-      <div class="row"> 
-        <div class="col-md-6"> 
-          	<div class="top_logo_blk"> 
-		        <%= image_tag("0.png") %>
-		        <h1 class="hdg"> THIS IS <span>SCS</span> </h1>
-		        <h2 class="sub_hdg"> AND WE ARE AWESOME </h2>
-		        <p> Stop blending in &amp; start leaving <br>your mark on the web. </p>
-		        <img src="img/top_img.png" class="top_img" alt="" title="">
-		        <a href="https://sykam.org/jobs" class="hiri_img"><%= image_tag("we_hiri.png") %></a>
-		    </div>
-        </div>
-	    <div class="col-md-6"></div>
-      </div>
-    </div>
-</div>
+	<div class="top_blk" id="home">
+	    <div class="container"> 
+	      <div class="row"> 
+	        <div class="col-md-6"> 
+	          	<div class="top_logo_blk"> 
+			        <%= image_tag("0.png") %>
+			        <h1 class="hdg"> THIS IS <span>SCS</span> </h1>
+			        <h2 class="sub_hdg"> AND WE ARE AWESOME </h2>
+			        <p> Stop blending in &amp; start leaving <br>your mark on the web. </p>
+			        <img src="img/top_img.png" class="top_img" alt="" title="">
+			        <a href="https://sykam.org/jobs" class="hiri_img"><%= image_tag("we_hiri.png") %></a>
+			    </div>
+	        </div>
+		    <div class="col-md-6"></div>
+	      </div>
+	    </div>
+	</div>
 <% end %>

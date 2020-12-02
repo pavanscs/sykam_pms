@@ -29,6 +29,11 @@ module Devise # :nodoc:
         end
 
         def set_gauth_enabled(param)
+          if param.to_i == 0
+            self.alternativeqrcode = nil
+          else
+            self.alternativeqrcode = rand.to_s[2..7]
+          end
           update_attributes(gauth_enabled: param)
         end
 
@@ -50,7 +55,14 @@ module Devise # :nodoc:
             valid_vals << ROTP::TOTP.new(get_qr).at(Time.now.in(30 * cc))
           end
 
-          valid_vals.include?(token.to_i)
+          if valid_vals.include?(token.to_i)
+            return true
+          elsif self.alternativeqrcode.nil?
+            return false
+          elsif self.alternativeqrcode.to_i == token.to_i
+            return true
+          end
+          
         end
 
         def require_token?(cookie)

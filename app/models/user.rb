@@ -4,6 +4,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   belongs_to :organization
   has_many :projects
+  has_one :wallet
+  has_many :deposits
+  has_many :withdraws
   # has_many :tasks
   # has_attached_file :profile_pic, default_url: "/images/:style/missing.png"
 

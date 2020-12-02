@@ -16,19 +16,26 @@ class Devise::DisplayqrController < DeviseController
 
   def update
     if resource.gauth_tmp != params[resource_name]['tmpid'] || !resource.validate_token(params[resource_name]['gauth_token'].to_i)
-      set_flash_message(:error, :invalid_token)
+      set_flash_message :alert, :invalid_token
       render :show
       return
     end
 
     if resource.set_gauth_enabled(params[resource_name]['gauth_enabled'])
-      set_flash_message :notice, (resource.gauth_enabled? ? :enabled : :disabled)
-        bypass_sign_in resource, scope: scope
+      if resource.gauth_enabled? 
+        flash[:notice]= "2FA is currently enabled, Incase you lost your phone you can use Alternative pin : #{current_user.alternativeqrcode}, save it"
+      else
+        set_flash_message :notice, :disabled
+      end
+
+      # set_flash_message :notice, (resource.gauth_enabled? ? :enabled : :disabled) 
+      bypass_sign_in resource, scope: scope
 
       respond_with resource, location: after_sign_in_path_for(resource)
     else
       render :show
     end
+
   end
 
   def refresh
@@ -39,7 +46,7 @@ class Devise::DisplayqrController < DeviseController
       sign_in scope, resource, bypass: true
       redirect_to [resource_name, :displayqr]
     else
-      redirect_to :root
+      redirect_to user_displayqr_path
     end
   end
 

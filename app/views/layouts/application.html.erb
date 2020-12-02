@@ -8,10 +8,10 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body id="login_bg">
+  <body id="pms_bg">
       <!-- add navbar -->
     <nav class="navbar">
-      <%= nav_bar fixed: :center, brand: "Sykam @ PMS ", responsive: true do %>
+      <%= nav_bar fixed: :center, brand: "Sykam @ PMS ", responsive: true do  %>
         <%= menu_group do %>
           <%- unless user_signed_in? %>
             <%= menu_item "Home", root_path %>
@@ -27,10 +27,10 @@
         <% end %>
         <%= menu_group pull: :right do %>
           <%- if user_signed_in? %>
-            <%= menu_item " Logout", destroy_user_session_path, :class => "fa fa-sign-out", method: :delete %>
+            <%= menu_item " Logout", destroy_user_session_path, :class => "fa fa-sign-out", style: "text-decoration: none;", method: :delete %>
           <%- else %>
-            <%= menu_item "Login", new_user_session_path%>
-            <%= menu_item "Signup", new_user_registration_path %>
+            <%= menu_item "Login", new_user_session_path, style: "text-decoration: none;"%>
+            <%= menu_item "Signup", new_user_registration_path, style: "text-decoration: none;" %>
           <% end %>         
         <% end %>
       <% end %>

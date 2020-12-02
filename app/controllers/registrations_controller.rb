@@ -1,12 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
 	def new
   	 @user = User.new
+     # @wallet = Wallet.new
   end
 
 	def create
   	@user = User.new(user_params)
   	@user.organization_id = params[:user][:organization][:organization_id].to_i
   	if @user.save
+      Wallet.create :user_id => @user.id
   		redirect_to new_user_session_path, notice: 'Successfull created, You will receive an email with instructions on Account Confirmable'
   	else
   		puts @user.errors.full_messages.inspect

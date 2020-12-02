@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   
@@ -23,8 +24,14 @@ Rails.application.routes.draw do
     patch 'registrations/update_pic' => "registrations_update_pic"
   end
   
+  #Transaction Roots 
+  get 'transactions/wallet'
+  get 'transactions/statements'
+  post 'transactions/deposit'
+  post 'transactions/withdraw'
+
+
   # post 'welcome/create', as: :register_user
   root 'welcome#index'
-end
 
- # get 'users/:user_id/projects(.:format)'
+end

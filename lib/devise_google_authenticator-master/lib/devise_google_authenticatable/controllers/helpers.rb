@@ -27,7 +27,7 @@ module DeviseGoogleAuthenticator
            action_name == 'create'
           return true
         end
-
+        
         false
       end
 

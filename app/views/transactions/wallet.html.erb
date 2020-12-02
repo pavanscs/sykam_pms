@@ -1,0 +1,68 @@
+<%- if user_signed_in? %>
+<div class="container-fluid">
+  <div class="col-xs-2"><%= render "layouts/sidebar" %></div>
+  <div class="col-xs-10 login-box" style="background-color:rgba(138, 245, 234, 0.4); padding-bottom: 15%"><br>
+  	<div><%= link_to "<button>Back</button>".html_safe, :back, :class=>"pull-right",:style => "color:white" %></div>
+  	<h1>Wallet</h1><br>
+  	<div class="row">
+	  	<div class="col-lg-1"></div>
+	  	<div class="form-group col-lg-3">
+	  			<h2>Balance<br>
+	  			<%= @wallet.balance %></h2>
+	  	</div>
+	  	<div class="form-group col-lg-4">
+	  		<h3>Deposit</h3>
+	  		<%= form_with(url: transactions_deposit_path, method: "post") do |dep| %>
+					<div class="form-group">
+					  <%= dep.label :amount %><br>
+					  <%= dep.number_field :amount, class: "form-control"%>
+					</div>
+					<div class="form-group">
+					  <%= dep.submit "deposit", {:class=> 'btn btn-primary btn-lg btn-rounded text-uppercase waves-effect waves-light',:style=> 'color:#FFFFFF;' } %>
+					</div>
+				<%end%>
+	  	</div>
+	  	<div class="form-group col-lg-4">
+	  		<h3>Withdraw</h3>
+	  		<%= form_with(url: transactions_withdraw_path, method: "post") do |wid| %>
+					<div class="form-group">
+					  <%= wid.label :amount %><br>
+					  <%= wid.number_field :amount, class: "form-control"%>
+					</div>
+					<div class="form-group">
+					  <%= wid.submit "withdraw", {:class=> 'btn btn-primary btn-lg btn-rounded text-uppercase waves-effect waves-light',:style=> 'color:#FFFFFF;', data: {confirm: 'A Withdraw fee is charged 10/- Are you sure want to continue?'} } %>
+					</div>
+				<%end%>
+	  	</div>
+  	</div>
+  	<div class="row container-fluid">
+  		<table class="table">
+        <thead style="color:rgba(70, 61, 6, 1);">
+          <tr>
+          	<th>S.no</th>
+            <th>Amount</th>
+            <th>Status</th>
+             <th>Applied Date</th>
+             <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+        	<% @deposit.each do |viewdep| %>
+        	<tr>
+        		<td><%= viewdep.id%></td>
+        		<td><%= viewdep.amount%></td>
+        		<% if viewdep.status.to_s == "pending" %>
+							<td><%= link_to 'Pending', nil, class: 'btn btn-warning btn-xs',style: 'color:blue; text-decoration:none; border-radius: 40%;' %></td>
+						<%else%>
+							<td><%= link_to 'Approved', nil, class: 'btn btn-success btn-xs',style: 'color:white; text-decoration:none; border-radius: 40%;' %></td>
+						<%end%>
+        		<td><%= viewdep.created_at.to_date %></td>
+        		<td></td>
+        	</tr>
+        	<%end%>
+        </tbody>
+      </table>
+  	</div>
+  </div>
+</div>
+<% end %>

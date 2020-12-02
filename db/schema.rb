@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_054350) do
+ActiveRecord::Schema.define(version: 2020_12_01_091118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 2020_11_30_054350) do
     t.index ["project_id"], name: "index_attachements_on_project_id"
   end
 
+  create_table "deposits", force: :cascade do |t|
+    t.decimal "amount"
+    t.integer "status", default: 0
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_deposits_on_user_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "organization_name"
     t.datetime "created_at", precision: 6, null: false
@@ -66,6 +75,21 @@ ActiveRecord::Schema.define(version: 2020_11_30_054350) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "statements", force: :cascade do |t|
+    t.decimal "referral_id"
+    t.string "statement"
+    t.decimal "amount"
+    t.string "action"
+    t.bigint "wallet_id", null: false
+    t.bigint "withdraw_id", null: false
+    t.bigint "deposit_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deposit_id"], name: "index_statements_on_deposit_id"
+    t.index ["wallet_id"], name: "index_statements_on_wallet_id"
+    t.index ["withdraw_id"], name: "index_statements_on_withdraw_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -119,8 +143,31 @@ ActiveRecord::Schema.define(version: 2020_11_30_054350) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  create_table "wallets", force: :cascade do |t|
+    t.decimal "balance", default: "0.0"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_wallets_on_user_id"
+  end
+
+  create_table "withdraws", force: :cascade do |t|
+    t.decimal "amount"
+    t.integer "status", default: 0
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_withdraws_on_user_id"
+  end
+
   add_foreign_key "attachements", "projects"
+  add_foreign_key "deposits", "users"
   add_foreign_key "projects", "users"
+  add_foreign_key "statements", "deposits"
+  add_foreign_key "statements", "wallets"
+  add_foreign_key "statements", "withdraws"
   add_foreign_key "tasks", "projects"
   add_foreign_key "users", "organizations"
+  add_foreign_key "wallets", "users"
+  add_foreign_key "withdraws", "users"
 end

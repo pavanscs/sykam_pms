@@ -27,9 +27,6 @@ class AttachementsController < ApplicationController
 	    end
 	end
 
-
-
-
 	private
 		def attachement_params
 			params.permit(:project_id, :image)

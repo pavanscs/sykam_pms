@@ -1,0 +1,10 @@
+<%- if user_signed_in? %>
+<div class="container-fluid">
+  <div class="col-xs-2"><%= render "layouts/sidebar" %></div>
+  <div class="col-xs-10 login-box" style="background-color:rgba(138, 245, 234, 0.4); padding-bottom: 30%"><br>
+    <div><%= link_to "<button>Back</button>".html_safe, :back, :class=>"pull-right",:style => "color:white" %></div>
+    <h1>Statements</h1>
+
+  </div>
+</div>
+<% end %>
